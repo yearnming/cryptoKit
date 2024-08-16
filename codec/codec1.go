@@ -64,6 +64,9 @@ func EncodeAndSplit1(input, split1, split2, encodingType string, splitByLine boo
 	if strings.HasPrefix(encodingType, "Base") && (strings.HasSuffix(encodingType, "Encode") || strings.HasSuffix(encodingType, "Decode")) && split1 == "" {
 		split1 = "\n"
 	}
+	if strings.HasPrefix(encodingType, "ConvertBase") && split1 == "" {
+		split1 = " "
+	}
 	// 按第一个分隔符分割输入字符串，并处理特定编码情况
 	parts := TrimSplit1(input, split1)
 	if encodingType == "ConvertBase" && !splitByLine {

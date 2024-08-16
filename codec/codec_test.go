@@ -66,7 +66,7 @@ func TestUnicodeEncodeDecode(t *testing.T) {
 	//decoded, _ := UnicodeDecode(encoded)
 	//gologger.Info().Msgf("Unicode: Encoded: [%s] --- Decoded: [%s]\n", encoded, decoded)
 	//original11 := "U+0048\\u0065\\u006c\\u006c\\u006f\\u002c\\u0020\\u4e16\\u754cU+0021"
-	customPrefix := "U+" // 自定义Unicode前缀
+	customPrefix := " U+" // 自定义Unicode前缀
 	original1, err := EncodeAndSplit1(original, "", customPrefix, "UnicodeEncode", false, false)
 	original123, err := EncodeAndSplit1(original1, customPrefix, "", "UnicodeDecode", false, false)
 	if err != nil {
@@ -140,7 +140,8 @@ func TestConvertBase(t *testing.T) {
 	}
 	fmt.Println("转换结果:", result)
 	original2 := "{{16,10}}$+++$69 64 3a\n69 6e 66\n69 64 3a\n69 6e 66"
-	original123, err := EncodeAndSplit1(original2, " ", " ", "ConvertBase", true, false)
+	//original2 := "{{16,10}}$+++$69"
+	original123, err := EncodeAndSplit1(original2, "", " ", "ConvertBase", true, false)
 	if err != nil {
 		fmt.Println("ConvertOrHexEncode 编码出错:", err)
 	} else {
